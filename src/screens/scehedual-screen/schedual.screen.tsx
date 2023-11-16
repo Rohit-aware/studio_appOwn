@@ -8,6 +8,7 @@ import { moderateScale } from 'react-native-size-matters'
 import ForwardOrangeArrow from '../../assets/svg/orange-forwar-arrow'
 import ClockSvg from '../../assets/svg/clock'
 import fontStyles from '../../styles/font-styles'
+import { SCREEN_HEIGHT } from '../../constants/responsive'
 
 const Schedual = ({ navigation }: any) => {
     const BorderColor = ['#4E8B00', '#888B00', '#007A8B', '#5E008B']
@@ -61,7 +62,7 @@ const Schedual = ({ navigation }: any) => {
                 showsVerticalScrollIndicator={false}
                 style={{
                     margin: moderateScale(15),
-                    height: Dimensions.get('screen').height,
+                    height: SCREEN_HEIGHT,
                 }}>
                 <FlatList
                     scrollEnabled={false}

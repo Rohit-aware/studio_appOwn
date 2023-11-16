@@ -94,7 +94,13 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
                             onPress={onPress}
                             style={{ flex: 1 }}
                         >
-                            <View style={{ alignItems: 'center', paddingVertical: moderateScale(10) }}>
+                            <View style={{
+                                alignItems: 'center',
+                                paddingVertical: moderateScale(10),
+                                borderTopWidth: isFocused ? moderateScale(1.8) : 0,
+                                borderTopColor: isFocused ? Colors.primaryColor : 'transparent',
+                            }}
+                            >
                                 {renderIcon(isFocused, label)}
 
                                 <Text

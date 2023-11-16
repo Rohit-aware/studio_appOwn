@@ -6,6 +6,7 @@ import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-na
 import TabBar from './components/TabBar';
 import EditProfile from '../screens/edit-profile/edit-profile.screen';
 import Colors from '../constants/colors';
+import CategoryList from '../screens/category-listing/category-list.screen';
 
 
 
@@ -100,6 +101,7 @@ const MainStack = () => {
                 <MainStackNavigator.Screen name='Schedual' component={Schedual} />
                 <MainStackNavigator.Screen name='Profile' component={Profile} />
                 <MainStackNavigator.Screen name='EditProfile' component={EditProfile} />
+                <MainStackNavigator.Screen name='CategoryList' component={CategoryList} />
             </MainStackNavigator.Navigator>
         </NavigationContainer>
     )

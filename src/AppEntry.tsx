@@ -8,7 +8,7 @@ const AppEntry = () => {
     return (
         <SafeAreaView style={[styles.rootStyle]}>
             <GestureHandlerRootView style={[styles.rootStyle]}>
-                <StatusBar backgroundColor={'#F6F6F6'} barStyle={'dark-content'} />
+                <StatusBar backgroundColor={'#888B0008'} barStyle={'dark-content'} />
                 <MainStack />
             </GestureHandlerRootView>
         </SafeAreaView>

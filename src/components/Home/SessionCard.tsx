@@ -2,7 +2,6 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View, ImageBackground } f
 import React from 'react'
 import commonStyles from '../../styles/common-styles'
 import HeaderTitle from './HeaderTitle'
-import { MornignSessions } from '../../local-data/dummyData'
 import FastImage from 'react-native-fast-image'
 import fontStyles from '../../styles/font-styles'
 import Colors from '../../constants/colors'
@@ -12,26 +11,37 @@ import ForwardArrow from '../../assets/svg/forward-arrow'
 import { moderateScale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
 import WeatherSvg from '../../assets/svg/WeatherSvg'
+import TakeSpace from '../common/take-space'
+import { SCREEN_WIDTH } from '../../constants/responsive'
 
-const SessionCard = () => {
+type sessionProps = {
+    MornignSessions: any;
+    fromCategoryList: boolean;
+}
+const SessionCard = (props: sessionProps) => {
+    const { MornignSessions, fromCategoryList } = props
     const navigation = useNavigation<any>()
     return (
         <View style={{
             paddingHorizontal: 0
         }}>
-            <HeaderTitle
-                categoryWord='Morning Magic'
-                bodyText='Upcoming morning session'
-            />
+            {fromCategoryList ? null :
+                < HeaderTitle
+                    categoryWord='Morning Magic'
+                    bodyText='Upcoming morning session'
+                />
+            }
             <View style={{
                 padding: moderateScale(5),
-                marginTop: moderateScale(5)
+                margin: fromCategoryList ? moderateScale(10) : moderateScale(0),
+                marginTop: fromCategoryList ? 0 : moderateScale(5),
             }}>
                 <FlatList
                     data={MornignSessions}
-                    horizontal
+                    horizontal={fromCategoryList ? false : true}
                     showsHorizontalScrollIndicator={false}
-                    ItemSeparatorComponent={() => <View style={{ padding: moderateScale(10) }} />}
+                    showsVerticalScrollIndicator={false}
+                    ItemSeparatorComponent={() => <TakeSpace space={moderateScale(10)} />}
                     contentContainerStyle={{
                     }}
                     renderItem={({ item, index }) => {
@@ -41,7 +51,8 @@ const SessionCard = () => {
                                     source={item.img}
                                     style={[styles.mornBann, {
                                         alignItems: 'flex-end',
-                                        padding: moderateScale(10)
+                                        padding: moderateScale(10),
+                                        width: fromCategoryList ? SCREEN_WIDTH - moderateScale(32, 0.3) : moderateScale(275, 0.3),
                                     }]}
                                     resizeMode='cover'
                                 >
@@ -53,13 +64,13 @@ const SessionCard = () => {
                                     </View>
                                 </ImageBackground>
                                 <View>
-                                    <Text style={[fontStyles.InterBold16, { padding: 15 }]}>
+                                    <Text style={[fontStyles.InterSemiBold16, { padding: 15 }]}>
                                         {item.title}
                                     </Text>
                                 </View>
 
                                 <View style={[commonStyles.flexRow, { alignItems: 'center' }]}>
-                                    <View style={styles.dateTimeContainer}>
+                                    <View style={[styles.dateTimeContainer, { width: fromCategoryList ? '68%' : '60%' }]}>
                                         <View style={[commonStyles.flexRow, styles.dateTxt]}>
                                             <Calender />
                                             <Text style={fontStyles.InterRegular12}>
@@ -97,25 +108,21 @@ export default SessionCard
 
 const styles = StyleSheet.create({
     bookTxt: {
-        height: moderateScale(40),
-        width: moderateScale(100),
         backgroundColor: Colors.primaryColor,
-        paddingHorizontal: moderateScale(10),
-        borderRadius: moderateScale(5)
+        padding: moderateScale(10),
+        borderRadius: moderateScale(5),
     },
     dateTxt: {
-        columnGap: 10,
-        paddingHorizontal: 10
+        columnGap: moderateScale(10),
     },
     dateTimeContainer: {
         flexDirection: 'column',
         rowGap: moderateScale(10),
         paddingBottom: moderateScale(15),
-        width: '60%'
+        paddingHorizontal: moderateScale(15),
     },
     mornBann: {
         height: moderateScale(185, 0.3),
-        width: moderateScale(275, 0.3),
         borderTopLeftRadius: moderateScale(15),
         borderTopRightRadius: moderateScale(15)
     },
@@ -127,8 +134,7 @@ const styles = StyleSheet.create({
     },
     weatheTxt: {
         backgroundColor: '#002F7426',
-        width: moderateScale(90),
-        height: moderateScale(30),
+        padding: moderateScale(10),
         borderRadius: moderateScale(10),
         columnGap: moderateScale(5)
     }

@@ -6,9 +6,10 @@ import Colors from '../../constants/colors'
 import ForwardArrow from '../../assets/svg/forward-arrow'
 import SessionCard from '../../components/Home/SessionCard'
 import Header from '../../components/Home/Header'
-import CategoryList from '../../components/Home/category'
 import { moderateScale } from 'react-native-size-matters'
 import SupportSession from '../../components/Home/SupportSession'
+import Category from '../../components/Home/category'
+import { MornignSessions } from '../../local-data/dummyData'
 
 const height = Dimensions.get('screen').height
 const Home = () => {
@@ -43,9 +44,9 @@ const Home = () => {
                 </View>
             </ImageBackground>
             {/* Category List coponenet */}
-            <CategoryList />
+            <Category />
             {/* MornignSessions */}
-            <SessionCard />
+            <SessionCard MornignSessions={MornignSessions} fromCategoryList={false} />
             {/* Sweat Support */}
             <SupportSession />
         </ScrollView>

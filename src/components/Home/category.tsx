@@ -1,13 +1,17 @@
-import { FlatList, ImageBackground, StyleSheet, Text, TouchableOpacity, View, Pressable } from 'react-native'
+import { FlatList, ImageBackground, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
 import React from 'react'
 import HeaderTitle from './HeaderTitle'
 import { category } from '../../local-data/dummyData'
 import fontStyles from '../../styles/font-styles'
 import Colors from '../../constants/colors'
 import { moderateScale } from 'react-native-size-matters'
+import { useNavigation } from '@react-navigation/native'
 
-
-const CategoryList = () => {
+interface CategoryNavigationProp {
+    navigate: (screen: string, params: any) => void;
+}
+const Category = () => {
+    const navigation = useNavigation<CategoryNavigationProp>();
     return (
         <View style={{
             paddingHorizontal: moderateScale(5),
@@ -33,9 +37,13 @@ const CategoryList = () => {
                     }}
                     renderItem={({ item, index }: any) => {
                         return (
-                            <TouchableOpacity style={{
+                            <TouchableOpacity
+                                onPress={() => {
+                                    navigation.navigate('CategoryList', { title: item.title });
+                                }}
+                                style={{
 
-                            }}>
+                                }}>
                                 <ImageBackground
                                     source={item.img}
                                     style={styles.categoryImg}
@@ -53,7 +61,7 @@ const CategoryList = () => {
     )
 }
 
-export default CategoryList
+export default Category
 
 const styles = StyleSheet.create({
     categoryImg: {

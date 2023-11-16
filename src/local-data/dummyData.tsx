@@ -27,7 +27,7 @@ export const category: categoryData[] = [
         img: require('../assets/images/Yoga.png')
     },
     {
-        title: 'Kickboxing',
+        title: 'Kick boxing',
         img: require('../assets/images/kickboxing.png')
     },
     {
@@ -51,7 +51,7 @@ export const category: categoryData[] = [
 export const MornignSessions: morningProps[] = [
     {
         img: require('../assets/images/kicking.png'),
-        title: 'Kick boxing',
+        title: 'Yoga',
         date: '9th Nov 2023',
         time: '7 pm',
     },
@@ -63,25 +63,25 @@ export const MornignSessions: morningProps[] = [
     },
     {
         img: require('../assets/images/kicking.png'),
-        title: 'Kick boxing',
+        title: 'Crossfit',
         date: '9th Nov 2023',
         time: '7 pm',
     },
     {
         img: require('../assets/images/kicking.png'),
-        title: 'Kick boxing',
+        title: 'Personal Fitness',
         date: '9th Nov 2023',
         time: '7 pm',
     },
     {
         img: require('../assets/images/kicking.png'),
-        title: 'Kick boxing',
+        title: 'Dance Fitness',
         date: '9th Nov 2023',
         time: '7 pm',
     },
     {
         img: require('../assets/images/kicking.png'),
-        title: 'Kick boxing',
+        title: 'Boxing',
         date: '9th Nov 2023',
         time: '7 pm',
     },
